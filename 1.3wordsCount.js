@@ -1,5 +1,11 @@
 function wordCount(str){
-    var countUpper = str.length - str.replace(/[A-Z]/g, '').length;    
-    return countUpper+1;
+    let len=str.length;
+    let count=1;
+    for(let i=0;i<len;i++){
+        if(String(str).charAt(i).toUpperCase()===String(str).charAt(i)){
+            count++;
+        }
+    } 
+    return count;
 }
 console.log(wordCount('oneTwoThree'));
