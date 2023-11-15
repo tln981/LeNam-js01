@@ -2,12 +2,10 @@ function thuGonTien(money) {
     let arrResult = [];
     let temp = parseInt(money);
     while (temp >= 1000) {
-        arrResult.unshift(String(temp).slice(-3));//
+        arrResult.unshift(String(temp).slice(-3));
         temp = parseInt(temp / 1000);
     };
     arrResult.unshift(String(temp));
-    console.log(arrResult)
-    console.log(typeof(arrResult.length))
     let letter='';
     let len=arrResult.length;
     if(len==1){
@@ -29,6 +27,6 @@ function thuGonTien(money) {
         sub=','+arrResult[1].slice(0,1);
     }
     result=arrResult[0]+sub+letter;
-    console.log(result);
+    return result;
 }
-thuGonTien(1000000)
+console.log(thuGonTien(1000000));

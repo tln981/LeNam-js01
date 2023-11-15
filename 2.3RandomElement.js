@@ -5,6 +5,5 @@ function randomElement(arr){
     let result=arr[rand];
     return result;
 }
-
 let arr=['a','b','c'];
 console.log(randomElement(arr));

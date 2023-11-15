@@ -1,4 +1,4 @@
-function chuyenDoiTien(money) {
+function convertMoney(money) {
     let moneyString = String(money);
     let arrMoney = moneyString.split('.');
     let arrResult = [];
@@ -14,9 +14,6 @@ function chuyenDoiTien(money) {
         result += ',' + arrResult[i];
     }
     result += '.' + arrMoney[1];
-    console.log(result);
+    return result;
 }
-chuyenDoiTien(1000010.55);
-
-
-
+console.log(chuyenDoiTien(1000010.55));

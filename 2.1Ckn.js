@@ -6,7 +6,6 @@ function factorial(a){
         return a*factorial(a-1);
     }
 }
-// console.log(factorial(5));
 function combination(n,k){
     let result=0;
     result=factorial(n)/(factorial(k)*factorial(n-k));
