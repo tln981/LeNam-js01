@@ -1,0 +1,92 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+}
+body{
+    background-color: rgb(24, 22, 36);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;  
+    flex-direction: column;  
+}
+.clock{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color:rgb(24, 22, 36) ;
+    border-radius: 50%;
+    border: 2px solid white ;
+    box-shadow:0px 0px 50px 5px rgb(74,55,90);
+
+    /* linear-gradient(to right bottom,rgb(38, 33, 50),rgb(69,55,80)) */
+}
+.clock::after{
+    content: '';
+    position:absolute;
+    background-color: white;
+    z-index: 15;
+    width: 7px;
+    height: 7px;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+}
+
+.clock .hand{
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    transform-origin: bottom;
+    /* transform: rotate(90deg); */
+}
+.clock .hand.hour{
+    width: 3px;
+    height: 30%;
+    z-index: 10;
+    background-color: white;
+}
+.clock .hand.minute{
+    width: 3px;
+    height: 48%;
+    z-index: 12;
+    background-color: white;
+}
+.clock .hand.second{
+    width:3px;
+    height: 48%;
+    z-index: 13;
+    background-color: rgb(74,55,90);
+}
+
+
+.degitalClock{
+    display: flex;
+    margin-top: 50px;
+    /* linear-gradient(to right bottom,rgb(38, 33, 50),rgb(69,55,80)) */
+}
+#digitalHour{
+    font-size: 80px;
+    text-align: center;
+    color: white;
+}
+#digitalColon{
+    font-size: 80px;
+    text-align: center;
+    color: white;
+}
+ #digitalMinute{
+    font-size: 80px;
+    text-align: center;
+    color: white;
+}
+
+
+#calender{
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    /* linear-gradient(to right bottom,rgb(38, 33, 50),rgb(69,55,80)) */
+}

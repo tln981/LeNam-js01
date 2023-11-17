@@ -10,7 +10,6 @@ container.style.backgroundColor='#2196F3';
 container.style.padding='20px';
 container.style.height='auto';
 for(let i =0;i<20;i++){
-
     const item=document.createElement("div");
     item.classList.add('item');
     item.style.position='relative';
@@ -23,7 +22,7 @@ for(let i =0;i<20;i++){
     cardHolder.style.width='100%';
     cardHolder.style.height='100%';
     cardHolder.id=i;
-    cardHolder.style.backgroundColor='rgba(255, 255, 255,0.8)';
+    cardHolder.style.backgroundColor='rgba(255, 255, 255)';
     cardHolder.style.border='1px solid rgba(0, 0, 0, 0.8)';
     cardHolder.style.fontSize='30px';
     cardHolder.style.alignItems='center';
@@ -56,4 +55,12 @@ for(let i =0;i<20;i++){
     valueResult.splice(indexValue,1);
     valueIcon.splice(indexValue,1);
 }
+
+const point=document.createElement('div')
+point.style.fontSize='30px';
+point.style.textAlign='center';
+point.style.justifyContent='center';
+point.id='point';
+point.innerHTML=pointValue;
 document.body.appendChild(container);
+document.body.appendChild(point)

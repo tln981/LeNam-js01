@@ -1,8 +1,10 @@
 let stack=[];
 let flag=0;
+pointValue=10000;
 function hidden(e){
     const element=e.currentTarget;
     element.style.visibility='hidden';
+    const point=document.getElementById('point');
     // const item=e.currentTaget;
     // item.style.visibility='hidden';
     if (stack.length==0){
@@ -16,9 +18,16 @@ function hidden(e){
                 elementPre.style.visibility='';
                 //stack.pop();
             },500)
+            pointValue-=500;
+            point.innerHTML=pointValue;
+            if(pointValue==0){
+                window.alert('loss');
+            }
         }
         else{
             flag++;
+            pointValue+=1000;
+            point.innerHTML=pointValue;
             if(flag==10){
                 window.alert('win');
             }
