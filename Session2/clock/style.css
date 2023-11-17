@@ -1,7 +1,7 @@
 *,*::after,*::before{
     box-sizing: border-box;
-    font-family: Gotham Rounded, sans-serif;
 }
+
 body{
     background-color: rgb(24, 22, 36);
     display: flex;
@@ -10,6 +10,7 @@ body{
     overflow: hidden;  
     flex-direction: column;  
 }
+
 .clock{
     position: relative;
     width: 300px;
@@ -18,9 +19,8 @@ body{
     border-radius: 50%;
     border: 2px solid white ;
     box-shadow:0px 0px 50px 5px rgb(74,55,90);
-
-    /* linear-gradient(to right bottom,rgb(38, 33, 50),rgb(69,55,80)) */
 }
+
 .clock::after{
     content: '';
     position:absolute;
@@ -40,27 +40,29 @@ body{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     transform-origin: bottom;
-    /* transform: rotate(90deg); */
 }
+
 .clock .hand.hour{
     width: 3px;
     height: 30%;
     z-index: 10;
     background-color: white;
 }
+
 .clock .hand.minute{
     width: 3px;
     height: 48%;
     z-index: 12;
     background-color: white;
 }
+
 .clock .hand.second{
     width:3px;
     height: 48%;
     z-index: 13;
-    background-color: rgb(74,55,90);
+    background-color: rgb(132, 93, 163);
+    box-shadow: 0 0 5px 0 rgb(145, 107, 176);
 }
-
 
 .degitalClock{
     display: flex;
@@ -82,7 +84,6 @@ body{
     text-align: center;
     color: white;
 }
-
 
 #calender{
     font-size: 20px;

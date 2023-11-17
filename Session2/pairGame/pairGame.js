@@ -5,8 +5,6 @@ function hidden(e){
     const element=e.currentTarget;
     element.style.visibility='hidden';
     const point=document.getElementById('point');
-    // const item=e.currentTaget;
-    // item.style.visibility='hidden';
     if (stack.length==0){
         stack.push(element);
     }else{
@@ -21,7 +19,13 @@ function hidden(e){
             pointValue-=500;
             point.innerHTML=pointValue;
             if(pointValue==0){
-                window.alert('loss');
+                if(window.confirm('game over!'));
+                {
+                    stack=[];
+                    flag=0;
+                    pointValue=10000;
+                    render();
+                }
             }
         }
         else{
@@ -29,12 +33,17 @@ function hidden(e){
             pointValue+=1000;
             point.innerHTML=pointValue;
             if(flag==10){
-                window.alert('win');
+                if(window.confirm('win')){
+                    {
+                        stack=[];
+                        flag=0;
+                        pointValue=10000;
+                        render();
+                    }
+                };
             }
-        }
-        
-        stack.pop()
-        
+        }   
+        stack.pop()  
     }
     //console.log(stack);
 }

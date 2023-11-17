@@ -8,7 +8,7 @@ const calender=document.getElementById('calender');
 const valueDay=['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY']
 const valueMonth=['JAN','FEB','MAR','APR','MAY','JUN','JULY','AUG','SEP','OCT','NOV','DEC']
 function setClock(){
-    const currentDate=new Date();
+    const currentDate=new Date();  
     const secRatio=currentDate.getSeconds()/60;
     const minRatio=(secRatio+currentDate.getMinutes())/60;
     const hrRatio=(minRatio+currentDate.getHours())/12;
@@ -26,7 +26,6 @@ function setClock(){
    
     const valueCalender=String(day+', '+month+' '+date)
     setValue(calender,valueCalender);
-    
 }
 
 function setRotation(element,rorationRatio){
