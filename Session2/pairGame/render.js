@@ -35,7 +35,8 @@ function render(){
         cardHolder.style.justifyContent='center';
         cardHolder.style.cursor='pointer';
         cardHolder.addEventListener('click',hidden)
-        let indexValue=Math.floor(Math.random()*valueResult.length);
+        // let indexValue=Math.floor(Math.random()*valueResult.length);
+        let indexValue=0;
         cardHolder.value=valueResult[indexValue];
         cardHolder.innerHTML=i+1;
 
@@ -50,8 +51,6 @@ function render(){
         card.style.justifyContent='center';
         card.innerHTML=valueIcon[indexValue];
         
-        
-
         item.appendChild(cardHolder);
         item.appendChild(card);
         container.appendChild(item);
