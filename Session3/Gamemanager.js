@@ -8,7 +8,7 @@ let game = new Node();
 let animationController=new Tween()
 let countResult=0;
 let pointValue=10000;
-game.createCard();
+createCard(game);
 game.childrenSprite.forEach((card)=>card.element.addEventListener('click',openCard));
 //game.shuffleCard();
 let point=new Label("$"+pointValue);
@@ -54,4 +54,15 @@ function openCard() {
         message.draw()
     }
     
+}
+function createCard(game) {
+    let paramPositionX = 0;
+    let paramPositionY = -1;
+    for (let indexCard = 0; indexCard < 20; indexCard++) {
+        paramPositionX = indexCard % 5;
+        paramPositionY = indexCard % 5 === 0 ? paramPositionY + 1 : paramPositionY;
+        let card = new Sprite((145 * paramPositionX) + 10, (paramPositionY * 165) + 5, './assets/cover.jpg');
+        card.srcResult = "./assets/" + Math.floor(indexCard / 2) + ".jpg";
+        game.addChildSprite(card);
+    }
 }

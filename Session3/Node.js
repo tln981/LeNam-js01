@@ -1,40 +1,39 @@
-import { Sprite } from "./Sprite.js";
-import { Label } from "./Label.js";
-export class Node{
-    constructor(){
-        this._positionX=0;
-        this._positionY=0;
-        this._src='./assets/BackGround.jpg';
-        this._width=1280;
-        this._height=720;
-        this.element=this._createElement();
-        this.childrenSprite=[];
-        this.childrenLabel=[];
+
+export class Node {
+    constructor() {
+        this._positionX = 0;
+        this._positionY = 0;
+        this._src = './assets/BackGround.jpg';
+        this._width = 1280;
+        this._height = 720;
+        this.element = this._createElement();
+        this.childrenSprite = [];
+        this.childrenLabel = [];
     }
-    get positionX(){return this._positionX}
-    set positionX(value){
-        this._positionX=value;
-        this.element.style.left=this._positionX+'px';
+    get positionX() { return this._positionX }
+    set positionX(value) {
+        this._positionX = value;
+        this.element.style.left = this._positionX + 'px';
     }
-    get positionY(){return this._positionY}
-    set positionY(value){
-        this._positionY=value;
-        this.element.style.top=this._positionY+'px';
+    get positionY() { return this._positionY }
+    set positionY(value) {
+        this._positionY = value;
+        this.element.style.top = this._positionY + 'px';
     }
-    get width(){return this._width}
-    set width(value){
-        this._width=value;
-        this.element.style.width=this._width+'px';
+    get width() { return this._width }
+    set width(value) {
+        this._width = value;
+        this.element.style.width = this._width + 'px';
     }
-    get height(){return this._height}
-    set height(value){
-        this._height=value;
-        this.element.style.height=this._height+'px';
+    get height() { return this._height }
+    set height(value) {
+        this._height = value;
+        this.element.style.height = this._height + 'px';
     }
-    get src(){return this._src}
-    set src(value){
-        this._src=value;
-        this.element.src=this._src;
+    get src() { return this._src }
+    set src(value) {
+        this._src = value;
+        this.element.src = this._src;
     }
 
     addChildSprite(childNode) {
@@ -58,31 +57,20 @@ export class Node{
             this.childrenLabel.splice(index, 1);
         }
     }
-    _createElement(){
-        let element=document.createElement('img');
-        element.style.position='absolute';
-        element.src=this._src;
-        element.style.left=this._positionX+'px';
-        element.style.top=this._positionY+'px';
-        element.style.width=this._width+'px';
-        element.style.height=this._height+'px';
+    _createElement() {
+        let element = document.createElement('img');
+        element.style.position = 'absolute';
+        element.src = this._src;
+        element.style.left = this._positionX + 'px';
+        element.style.top = this._positionY + 'px';
+        element.style.width = this._width + 'px';
+        element.style.height = this._height + 'px';
         //element.style.backgroundColor='rgba(0, 0, 0)';
         return element;
     }
 
-    createCard() {
-        let paramPositionX = 0;
-        let paramPositionY = -1;
-        for (let indexCard = 0; indexCard < 20; indexCard++) {
-            paramPositionX = indexCard % 5;
-            paramPositionY = indexCard % 5 === 0 ? paramPositionY + 1 : paramPositionY;
-            let card = new Sprite((145 * paramPositionX) + 10, (paramPositionY * 165) + 5, './assets/cover.jpg')
-            console.log((145 * paramPositionX) + 10, (paramPositionY * 165) + 5)
-            card.srcResult = "./assets/" + Math.floor(indexCard / 2) + ".jpg";
-            this.addChildSprite(card);
-        }
-    }
     
+
     shuffleCard() {
         let valueCards = ['0', '0', '1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8', '9', '9']
         this.childrenSprite.forEach(card => {
@@ -93,11 +81,11 @@ export class Node{
         });
     }
 
-    draw(){
+    draw() {
         document.body.appendChild(this.element);
         //if(this.isPlay==true) 
-        this.childrenSprite.forEach(child=>{child.draw()})
-        this.childrenLabel.forEach(child=>{child.draw()})
+        this.childrenSprite.forEach(child => { child.draw() })
+        this.childrenLabel.forEach(child => { child.draw() })
     }
 }
 
