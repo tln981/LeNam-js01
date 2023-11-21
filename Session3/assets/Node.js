@@ -1,4 +1,5 @@
 import { Sprite } from "./Sprite.js";
+import { Label } from "./Label.js";
 export class Node{
     constructor(){
         this._positionX=0;
@@ -7,12 +8,8 @@ export class Node{
         this._width=1280;
         this._height=720;
         this.element=this._createElement();
-        this._countResult=0;
-        this._isPlay=false;
-        this._stackCard=[];
         this.childrenSprite=[];
         this.childrenLabel=[];
-
     }
     get positionX(){return this._positionX}
     set positionX(value){
@@ -39,16 +36,7 @@ export class Node{
         this._src=value;
         this.element.src=this._src;
     }
-    get countResult(){return this._countResult}
-    set countResult(value){
-        this._countResult=value;
-    }
-    get stackCard(){return this._stackCard}
 
-    get isPlay(){return this._isPlay}
-    set isPlay(value){
-        this._isPlay=value;
-    }
     addChildSprite(childNode) {
         this.childrenSprite.push(childNode);
     }
@@ -70,7 +58,6 @@ export class Node{
             this.childrenLabel.splice(index, 1);
         }
     }
-
     _createElement(){
         let element=document.createElement('img');
         element.style.position='absolute';
@@ -90,50 +77,19 @@ export class Node{
             paramPositionX = indexCard % 5;
             paramPositionY = indexCard % 5 === 0 ? paramPositionY + 1 : paramPositionY;
             let card = new Sprite((145 * paramPositionX) + 10, (paramPositionY * 165) + 5, './assets/cover.jpg')
-            //card.element.addEventListener('click', this.openCard.bind(card));
+            console.log((145 * paramPositionX) + 10, (paramPositionY * 165) + 5)
             card.srcResult = "./assets/" + Math.floor(indexCard / 2) + ".jpg";
-            
-            //card.active=false;
             this.addChildSprite(card);
         }
     }
-    // openCard(e) {
-    //     const element = e.currentTarget;
-    //     console.log(this.childrenSprite);
-    //     let currentCard = this.childrenSprite.find((card) => card.element == element);
-        
-    //     currentCard.active = false;
-    //     if (this.stackCard.length == 0) {
-    //         this.stackCard.push(currentCard);
-    //     } else {
-    //         let previousCard = this.childrenSprite.find((card) => card == this.stackCard[0]);
-    //         if (previousCard.srcResult != currentCard.srcResult) {
-    //             setTimeout(() => {
-    //                 currentCard.active = true;
-    //                 previousCard.active = true;
-    //             }, 500)
-    //         } else {
-    //             if (currentCard === previousCard) {
-    //                 currentCard.active=true;
-    //             } else {
-    //                 setTimeout(() => {
-    //                     previousCard.visibility = 'hidden';
-    //                     currentCard.visibility = 'hidden';
-    //                 }, 500)
-    //                 countResult++;
-    //             }
-    //         }
-    //         stackCard.pop();
-    //     }
-    // }
-
+    
     shuffleCard() {
         let valueCards = ['0', '0', '1', '1', '2', '2', '3', '3', '4', '4', '5', '5', '6', '6', '7', '7', '8', '8', '9', '9']
         this.childrenSprite.forEach(card => {
             const randomCard = +Math.floor(Math.random() * valueCards.length)
             card.srcResult = "./assets/" + valueCards[randomCard] + ".jpg";
             valueCards.splice(randomCard, 1);
-            card.active=false;
+            //card.active=false;
         });
     }
 
@@ -141,10 +97,7 @@ export class Node{
         document.body.appendChild(this.element);
         //if(this.isPlay==true) 
         this.childrenSprite.forEach(child=>{child.draw()})
-
-        this.childrenLabel.forEach(child=>{
-            child.draw();
-        })
+        this.childrenLabel.forEach(child=>{child.draw()})
     }
 }
 
