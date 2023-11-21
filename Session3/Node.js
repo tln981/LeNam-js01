@@ -1,5 +1,5 @@
 import { Sprite } from "./Sprite.js";
-import { Label } from "../Label.js";
+import { Label } from "./Label.js";
 export class Node{
     constructor(){
         this._positionX=0;
