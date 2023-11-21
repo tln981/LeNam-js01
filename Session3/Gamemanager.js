@@ -16,7 +16,7 @@ point.positionX=1050;
 point.positionY=5;
 game.addChildLabel(point);
 game.draw();
-animationController.distributeCard(game.childrenSprite);
+ animationController.distributeCard(game.childrenSprite);
 
 
 function openCard() {
@@ -33,7 +33,7 @@ function openCard() {
             pointValue-=500;
         } else {
             if (currentCard === previousCard) {
-                currentCard.active = true;
+                animationController.flipOff(currentCard,previousCard);
                 pointValue-=500;
             } else {
                 setTimeout(() => {
