@@ -16,7 +16,7 @@ point.positionX=1050;
 point.positionY=5;
 game.addChildLabel(point);
 game.draw();
- animationController.distributeCard(game.childrenSprite);
+animationController.distributeCard(game.childrenSprite);
 
 
 function openCard() {
