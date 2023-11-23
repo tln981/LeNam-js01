@@ -33,14 +33,13 @@ function createFile(filePathTss,filePathJss){
         const classImport = path.parse(filePath).name;
         const directoryPath = path.dirname(filePath);
         let pathImport = path.join(directoryPath, classImport);
-        pathImport= pathImport.replace(__dirname,'.');
+        pathImport= pathImport.replace(process.cwd(),'.');
         content+=`import { ${classImport} } from "${pathImport}";\n`;
     });
 
     filePathJss.forEach(filePath=>{
         const classImport = path.parse(filePath).name;
-        const pathImport= filePath.replace(__dirname,'.');
-
+        const pathImport= filePath.replace(process.cwd(),'.');
         content+=`import { ${classImport} } from "${pathImport}";\n`;
     });
     const newFile='index.js';
