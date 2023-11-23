@@ -15,7 +15,6 @@ function findFile(dir, result, extension) {
         return extension.includes(extensionFile);
     });
     files.forEach(file => result.push(dir + '/' + file));
-
     const folder = fs.readdirSync(dir, { withFileTypes: true });
     const directories = folder.filter(file => file.isDirectory());
     if (directories.length > 0) {
@@ -36,7 +35,6 @@ function createFile(filePathTss,filePathJss){
         pathImport= pathImport.replace(process.cwd(),'.');
         content+=`import { ${classImport} } from "${pathImport}";\n`;
     });
-
     filePathJss.forEach(filePath=>{
         const classImport = path.parse(filePath).name;
         const pathImport= filePath.replace(process.cwd(),'.');
