@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ạpp Chạt</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <input id="usernameInput" placeholder="Enter your username" />
+  <button id="btnJoin" onclick="joinChat()">Join Chat</button>
+  
+  <div id="chatDiv" style="display: none;">
+    <input id="recipientInput" placeholder="Enter recipient username" />
+    <input id="messageInput" autocomplete="off" /><button onclick="sendMessage()">Send</button>
+    <ul id="messages"></ul>
+  </div>
+
+  <script>
+    const socket = io();
+    let username = '';
+    //nhập tên vào cập nhật giao diện
+    function joinChat() {
+      username = document.getElementById('usernameInput').value;
+      if (username.trim() !== '') {
+        document.getElementById('usernameInput').style.display = 'none';
+        document.getElementById('btnJoin').style.display = 'none';
+        document.getElementById('chatDiv').style.display = 'block';
+        socket.emit('join', username);
+      }
+    }
+
+    function sendMessage() {
+      const recipient = document.getElementById('recipientInput').value;
+      const msg = document.getElementById('messageInput').value;
+      if (recipient.trim() !== '' && msg.trim() !== '') {
+        socket.emit('private message', { recipient, msg,username });
+        $('#messages').append($('<li>').text(`To ${recipient}: ${msg}`));
+        $('#messageInput').val('');
+      }
+    }
+
+    socket.on('chat message', (msg) => {
+      $('#messages').append($('<li>').text(msg));
+    });
+
+    socket.on('onlineUsers',(onlineUsers)=>{
+        // cập nhật danh sách user
+        console.log(onlineUsers);
+    })
+  </script>
+</body>
+</html>
