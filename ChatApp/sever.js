@@ -10,19 +10,19 @@ app.use(express.static(__dirname));
 
 let onlineUsers={};
 io.on('connection', (socket) => {
-  console.log('A user connected');
-
-  // Nhận tên người dùng và tham gia phòng chat riêng của họ
   socket.on('join', (userName) => {
-    socket.join(userName); // Người dùng tham gia vào phòng chat có tên là username
-    io.to(userName).emit('chat message', 'Welcome to Ạpp Chạt!');
+    socket.join(socket.id);
     onlineUsers[socket.id] = userName;
     io.emit('onlineUsers',onlineUsers);
   });
 
-  // Gửi tin nhắn riêng cho mỗi người dùng
-  socket.on('private message', ({ recipient, msg,username }) => {
-    io.to(recipient).emit('chat message', `Ạpp Chạt from ${username}: ${msg}`);
+
+  socket.on('message', ({ recipient, msg ,username }) => {
+    if(recipient=="All"){
+      io.emit('chatAll',{ sender: username, text: msg, type: 'received',id:socket.id })
+    }else{
+      io.to(recipient).emit('chatPrivate', { sender: username, text: msg, type: 'received',id:socket.id });
+    }
   });
 
   socket.on('disconnect', () => {
@@ -30,11 +30,9 @@ io.on('connection', (socket) => {
     delete onlineUsers[socket.id];
     io.emit('onlineUsers',onlineUsers);
   });
-
-
 });
 
 server.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
- 
+
